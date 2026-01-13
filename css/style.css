@@ -1,0 +1,556 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 像素风格字体 */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #1a1a2e;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    touch-action: manipulation;
+}
+
+/* 游戏容器 */
+.game-container {
+    width: 100%;
+    max-width: 900px;
+    background-color: #16213e;
+    border: 4px solid #0f3460;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(15, 52, 96, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+/* 游戏头部 */
+.game-header {
+    background-color: #0f3460;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 4px solid #16213e;
+}
+
+.game-header h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #e94560;
+    text-shadow: 2px 2px 0px #000;
+}
+
+/* 文本显示区域 */
+.text-display {
+    min-height: 60px;
+    padding: 15px;
+    background-color: rgba(233, 69, 96, 0.1);
+    border: 2px solid #e94560;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.text-display.show {
+    opacity: 1;
+    animation: fadeInOut 3s ease-in-out;
+}
+
+/* 文本淡入淡出动画 */
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-10px); }
+    20% { opacity: 1; transform: translateY(0); }
+    80% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}
+
+/* 游戏主区域 */
+.game-main {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1a2e;
+    flex: 1;
+    min-height: 400px;
+}
+
+/* 游戏画布 */
+#game-canvas {
+    border: 4px solid #0f3460;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    max-width: 100%;
+    height: auto;
+}
+
+/* 移动端控制区域 */
+.mobile-controls {
+    padding: 20px;
+    background-color: #0f3460;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 4px solid #16213e;
+    border-bottom: 4px solid #16213e;
+}
+
+/* 虚拟方向键 */
+.dpad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.dpad-btn {
+    width: 60px;
+    height: 60px;
+    background-color: #16213e;
+    border: 3px solid #e94560;
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    touch-action: manipulation;
+    transition: all 0.1s ease;
+}
+
+.dpad-btn:active {
+    background-color: #e94560;
+    transform: scale(0.95);
+}
+
+.dpad-row {
+    display: flex;
+    gap: 10px;
+}
+
+/* 游戏底部 */
+.game-footer {
+    background-color: #0f3460;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 4px solid #16213e;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* 游戏信息 */
+.game-info {
+    font-size: 12px;
+    color: #f0f0f0;
+}
+
+#heart-count {
+    color: #e94560;
+    font-weight: bold;
+}
+
+/* 游戏控制说明 */
+.game-controls {
+    font-size: 10px;
+    color: #b0b0b0;
+    text-align: right;
+}
+
+/* 响应式设计 */
+@media (max-width: 900px) {
+    .game-header h1 {
+        font-size: 18px;
+    }
+    
+    .text-display {
+        font-size: 12px;
+        min-height: 50px;
+    }
+    
+    .game-footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .game-controls {
+        text-align: center;
+    }
+    
+    .dpad-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    
+    .game-header {
+        padding: 15px;
+    }
+    
+    .game-header h1 {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    .text-display {
+        font-size: 10px;
+        padding: 10px;
+    }
+    
+    .game-main {
+        padding: 15px;
+        min-height: 300px;
+    }
+    
+    .mobile-controls {
+        padding: 15px;
+    }
+    
+    .dpad-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 14px;
+    }
+    
+    .game-footer {
+        padding: 15px;
+    }
+    
+    .game-info {
+        font-size: 10px;
+    }
+    
+    .game-controls {
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 400px) {
+    .dpad-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 12px;
+    }
+    
+    .dpad-row {
+        gap: 8px;
+    }
+    
+    .dpad {
+        gap: 8px;
+    }
+}
+
+/* 隐藏PC端的移动控制 */
+@media (min-width: 768px) {
+    .mobile-controls {
+        display: none;
+    }
+}
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 像素风格字体 */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #1a1a2e;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    touch-action: manipulation;
+}
+
+/* 游戏容器 */
+.game-container {
+    width: 100%;
+    max-width: 900px;
+    background-color: #16213e;
+    border: 4px solid #0f3460;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(15, 52, 96, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+/* 游戏头部 */
+.game-header {
+    background-color: #0f3460;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 4px solid #16213e;
+}
+
+.game-header h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #e94560;
+    text-shadow: 2px 2px 0px #000;
+}
+
+/* 文本显示区域 */
+.text-display {
+    min-height: 60px;
+    padding: 15px;
+    background-color: rgba(233, 69, 96, 0.1);
+    border: 2px solid #e94560;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.text-display.show {
+    opacity: 1;
+    animation: fadeInOut 3s ease-in-out;
+}
+
+/* 文本淡入淡出动画 */
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-10px); }
+    20% { opacity: 1; transform: translateY(0); }
+    80% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}
+
+/* 游戏主区域 */
+.game-main {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1a2e;
+    flex: 1;
+    min-height: 400px;
+}
+
+/* 游戏画布 */
+#game-canvas {
+    border: 4px solid #0f3460;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    max-width: 100%;
+    height: auto;
+}
+
+/* 移动端控制区域 */
+.mobile-controls {
+    padding: 20px;
+    background-color: #0f3460;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 4px solid #16213e;
+    border-bottom: 4px solid #16213e;
+}
+
+/* 虚拟方向键 */
+.dpad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.dpad-btn {
+    width: 60px;
+    height: 60px;
+    background-color: #16213e;
+    border: 3px solid #e94560;
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    touch-action: manipulation;
+    transition: all 0.1s ease;
+}
+
+.dpad-btn:active {
+    background-color: #e94560;
+    transform: scale(0.95);
+}
+
+.dpad-row {
+    display: flex;
+    gap: 10px;
+}
+
+/* 游戏底部 */
+.game-footer {
+    background-color: #0f3460;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 4px solid #16213e;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* 游戏信息 */
+.game-info {
+    font-size: 12px;
+    color: #f0f0f0;
+}
+
+#heart-count {
+    color: #e94560;
+    font-weight: bold;
+}
+
+/* 游戏控制说明 */
+.game-controls {
+    font-size: 10px;
+    color: #b0b0b0;
+    text-align: right;
+}
+
+/* 响应式设计 */
+@media (max-width: 900px) {
+    .game-header h1 {
+        font-size: 18px;
+    }
+    
+    .text-display {
+        font-size: 12px;
+        min-height: 50px;
+    }
+    
+    .game-footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .game-controls {
+        text-align: center;
+    }
+    
+    .dpad-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    
+    .game-header {
+        padding: 15px;
+    }
+    
+    .game-header h1 {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    .text-display {
+        font-size: 10px;
+        padding: 10px;
+    }
+    
+    .game-main {
+        padding: 15px;
+        min-height: 300px;
+    }
+    
+    .mobile-controls {
+        padding: 15px;
+    }
+    
+    .dpad-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 14px;
+    }
+    
+    .game-footer {
+        padding: 15px;
+    }
+    
+    .game-info {
+        font-size: 10px;
+    }
+    
+    .game-controls {
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 400px) {
+    .dpad-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 12px;
+    }
+    
+    .dpad-row {
+        gap: 8px;
+    }
+    
+    .dpad {
+        gap: 8px;
+    }
+}
+
+/* 隐藏PC端的移动控制 */
+@media (min-width: 768px) {
+    .mobile-controls {
+        display: none;
+    }
+}

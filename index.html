@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1a1a2e">
+    <title>寻找爱心</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1>寻找爱心</h1>
+            <div id="text-display" class="text-display"></div>
+        </header>
+        
+        <main class="game-main">
+            <canvas id="game-canvas" width="800" height="600"></canvas>
+        </main>
+        
+        <div class="mobile-controls" id="mobile-controls">
+            <div class="dpad">
+                <button class="dpad-btn" data-direction="up">↑</button>
+                <div class="dpad-row">
+                    <button class="dpad-btn" data-direction="left">←</button>
+                    <button class="dpad-btn" data-direction="down">↓</button>
+                    <button class="dpad-btn" data-direction="right">→</button>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="game-footer">
+            <div class="game-info">
+                <span>爱心收集：</span>
+                <span id="heart-count">0</span>
+                <span>/</span>
+                <span id="total-hearts">0</span>
+            </div>
+            <div class="game-controls">
+                <p>使用方向键控制角色移动</p>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- 游戏核心模块 -->
+    <script src="js/game.js"></script>
+    
+    <!-- 未来扩展模块预留 -->
+    <!-- <script src="js/modules/combat.js"></script> -->
+    <!-- <script src="js/modules/skills.js"></script> -->
+    <!-- <script src="js/modules/upgrades.js"></script> -->
+</body>
+</html>
